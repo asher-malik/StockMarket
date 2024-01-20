@@ -1,10 +1,13 @@
 import customtkinter as ctk
-from ctypes import windll, byref, sizeof, c_int
 import pandas as pd
 import matplotlib.pyplot as plt
 import yfinance as yf
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
+try:
+    from ctypes import windll, byref, sizeof, c_int
+except:
+    pass
 
 BACKGROUND_COLOR = '#262f46'
 PLOT_COLOR = '#5ed4bf'
@@ -18,8 +21,11 @@ window.configure(fg_color=BACKGROUND_COLOR)
 window.resizable(False, False)
 window.geometry(f'{WINDOW_WIDTH}x{WINDOW_HEIGHT}')
 
-HWND = windll.user32.GetParent(window.winfo_id())
-windll.dwmapi.DwmSetWindowAttribute(HWND, 35, byref(c_int(int(BACKGROUND_COLOR[5:7] + BACKGROUND_COLOR[3:5] + BACKGROUND_COLOR[1:3], 16))), sizeof(c_int))
+try:
+    HWND = windll.user32.GetParent(window.winfo_id())
+    windll.dwmapi.DwmSetWindowAttribute(HWND, 35, byref(c_int(int(BACKGROUND_COLOR[5:7] + BACKGROUND_COLOR[3:5] + BACKGROUND_COLOR[1:3], 16))), sizeof(c_int))
+except:
+    pass
 
 class StockSettings(ctk.CTkFrame):
     def __init__(self, parent):
