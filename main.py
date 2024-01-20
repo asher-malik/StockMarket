@@ -13,7 +13,6 @@ BACKGROUND_COLOR = '#262f46'
 PLOT_COLOR = '#5ed4bf'
 WINDOW_WIDTH = 700
 WINDOW_HEIGHT = 650
-API_KEY = 'Q3fkhJXjvNAhZ0F43UvxPbasinz74Dve'
 
 window = ctk.CTk()
 window.title('')
